@@ -4,6 +4,8 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import { connect } from "react-redux";
+import { addCat, addTime, addType } from "../redux/actions";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -15,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Filter = () => {
+const Filter = (props) => {
   const classes = useStyles();
   const [cat, setCat] = useState("All");
   const [type, setType] = useState("popularity");
@@ -23,14 +25,17 @@ const Filter = () => {
 
   const handleChange = (event) => {
     setCat(event.target.value);
+    props.addCat(event.target.value);
   };
 
   const handleFilter = (event) => {
     setType(event.target.value);
+    props.addType(event.target.value);
   };
 
   const handleTime = (event) => {
     setTime(event.target.value);
+    props.addTime(event.target.value);
   };
 
   return (
@@ -83,4 +88,9 @@ const Filter = () => {
   );
 };
 
-export default Filter;
+const mapStateToProps = (state) => {
+  console.log(state);
+  return { filter: state.filter };
+};
+
+export default connect(mapStateToProps, { addCat, addTime, addType })(Filter);

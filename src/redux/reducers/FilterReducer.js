@@ -1,4 +1,7 @@
-const FilterReducer = (state = {}, action) => {
+const FilterReducer = (
+  state = { cat: "all", type: "popularity", time: "all" },
+  action
+) => {
   switch (action.type) {
     case "CAT":
       return { ...state, cat: action.payload };
