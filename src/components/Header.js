@@ -2,10 +2,15 @@ import React from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import { connect } from "react-redux";
 import { searchTerm } from "../redux/actions";
+import history from "../history";
 
 const Header = (props) => {
   const handleChange = (event) => {
     props.searchTerm(event.target.value);
+  };
+
+  const submitSearch = (event) => {
+    history.push(`/query/${props.search}`);
   };
 
   return (
@@ -13,7 +18,7 @@ const Header = (props) => {
       <div className="header_left"></div>
       <div>
         <input type="text" placeholder="Search" onChange={handleChange} />
-        <button>
+        <button onClick={submitSearch}>
           <SearchIcon />
         </button>
       </div>
@@ -22,7 +27,8 @@ const Header = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return { search: state.search };
+  console.log(state.search);
+  return { search: state.search.term };
 };
 
 export default connect(mapStateToProps, { searchTerm })(Header);

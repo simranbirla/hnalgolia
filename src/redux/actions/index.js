@@ -7,11 +7,11 @@ export const addType = (item) => {
 };
 
 export const addTime = (item) => {
-  return { type: "TIME", paylaod: item };
+  return { type: "TIME", payload: item };
 };
 
 export const searchTerm = (term) => {
-  return { type: "SEARCH", paylaod: term };
+  return { type: "SEARCH", payload: term };
 };
 
 export const increasePage = (page) => {
