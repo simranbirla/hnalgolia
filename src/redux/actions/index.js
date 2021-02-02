@@ -9,3 +9,11 @@ export const addType = (item) => {
 export const addTime = (item) => {
   return { type: "TIME", paylaod: item };
 };
+
+export const searchTerm = (term) => {
+  return { type: "SEARCH", paylaod: term };
+};
+
+export const increasePage = (page) => {
+  return { type: "PAGE", payload: page };
+};
