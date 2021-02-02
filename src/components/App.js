@@ -6,15 +6,21 @@ import Header from "./Header";
 import History from "./History";
 import MainPage from "./MainPage";
 import Search from "./Search";
+import { connect } from "react-redux";
+import Login from "./Login";
 
-const App = () => {
+const App = ({ sign }) => {
   return (
     <div>
       <Router history={history}>
         <Header />
         <Filter />
         <Switch>
-          <Route path="/" exact component={MainPage} />
+          {sign ? (
+            <Route path="/" exact component={MainPage} />
+          ) : (
+            <Route path="/" exact component={Login} />
+          )}
           <Route path="/history" exact component={History} />
           <Route path="/query/:id" exact component={Search} />
         </Switch>
@@ -23,4 +29,8 @@ const App = () => {
   );
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  return { sign: state.auth.sign_in };
+};
+
+export default connect(mapStateToProps)(App);

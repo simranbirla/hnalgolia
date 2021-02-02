@@ -3,6 +3,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import { connect } from "react-redux";
 import { searchTerm } from "../redux/actions";
 import history from "../history";
+import Google from "./GoogleAuth";
 
 const Header = (props) => {
   const handleChange = (event) => {
@@ -15,7 +16,9 @@ const Header = (props) => {
 
   return (
     <div className="header">
-      <div className="header_left"></div>
+      <div className="header_left">
+        <Google />
+      </div>
       <div>
         <input type="text" placeholder="Search" onChange={handleChange} />
         <button onClick={submitSearch}>
