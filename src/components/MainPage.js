@@ -5,13 +5,15 @@ import { connect } from "react-redux";
 const MainPage = ({ filter }) => {
   const [data, setData] = useState();
   useEffect(() => {
-    fetch(`http://hn.algolia.com/api/v1/search?query=&page=${filter.page}`)
+    fetch(
+      `http://hn.algolia.com/api/v1/search?query=&page=${filter.page}&tags=${filter.cat}`
+    )
       .then((res) => res.json())
       .then((data) => setData(data));
     return () => {
       setData();
     };
-  }, [filter.page]);
+  }, [filter.page, filter.cat]);
 
   return (
     <div>

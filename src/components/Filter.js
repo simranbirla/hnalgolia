@@ -19,9 +19,9 @@ const useStyles = makeStyles((theme) => ({
 
 const Filter = (props) => {
   const classes = useStyles();
-  const [cat, setCat] = useState("All");
+  const [cat, setCat] = useState(" ");
   const [type, setType] = useState("popularity");
-  const [time, setTime] = useState("all");
+  const [time, setTime] = useState(" ");
 
   const handleChange = (event) => {
     setCat(event.target.value);
@@ -49,9 +49,9 @@ const Filter = (props) => {
           value={cat}
           onChange={handleChange}
         >
-          <MenuItem value="All">All</MenuItem>
-          <MenuItem value="Stories">Stories</MenuItem>
-          <MenuItem value="Comments">Comments</MenuItem>
+          <MenuItem value=" ">All</MenuItem>
+          <MenuItem value="story">Stories</MenuItem>
+          <MenuItem value="comment">Comments</MenuItem>
         </Select>
       </FormControl>
       <p>By</p>
@@ -76,7 +76,7 @@ const Filter = (props) => {
           value={time}
           onChange={handleTime}
         >
-          <MenuItem value="all">All time</MenuItem>
+          <MenuItem value=" ">All time</MenuItem>
           <MenuItem value="last24h">Last 24 hour</MenuItem>
           <MenuItem value="pastWeek">Past Week</MenuItem>
           <MenuItem value="pastMonth">Past Month</MenuItem>
