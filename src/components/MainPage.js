@@ -13,27 +13,6 @@ const MainPage = ({ filter }) => {
         )
           .then((res) => res.json())
           .then((data) => setData(data));
-      } else if (filter.time === "week") {
-        var week =
-          new Date(
-            new Date().getFullYear(),
-            new Date().getMonth() + 1,
-            new Date().getDate(),
-            0,
-            0,
-            0,
-            0
-          ) / 1000;
-        console.log(week);
-        fetch(
-          `http://hn.algolia.com/api/v1/search_by_date?query=&page=${
-            filter.page
-          }&tags=${filter.cat}&numericFilters=created_at_i&gt${
-            week - 604800
-          },created_at_i<${week}`
-        )
-          .then((res) => res.json())
-          .then((data) => setData(data));
       }
     } else {
       fetch(
