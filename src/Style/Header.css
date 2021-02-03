@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  gap: 10px;
+  padding: 1em;
+  background-color: #ff742b;
+  color: white;
+}
+
+.header a {
+  color: White;
+  font-weight: 700;
+}
+
+.header_main {
+  display: flex;
+  width: 75%;
+}
+
+.header_main input {
+  width: 80%;
+}
+
+.header_main button {
+  width: 20%;
+}

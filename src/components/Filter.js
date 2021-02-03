@@ -6,6 +6,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import { connect } from "react-redux";
 import { addCat, addTime, addType } from "../redux/actions";
+import "../Style/Filter.css";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Page from "./Page";
 import { connect } from "react-redux";
+import "../Style/MainPage.css";
 
 const MainPage = ({ filter }) => {
   const [data, setData] = useState();
@@ -27,20 +28,23 @@ const MainPage = ({ filter }) => {
   }, [filter.page, filter.cat, filter.type, filter.time]);
 
   return (
-    <div>
+    <div class="mainpage">
       {data
         ? data.hits.map((story) => {
             return (
-              <div>
-                <div>
+              <div className="main">
+                <div className="main-title">
                   <h2>{story.title}</h2>
-                  <p> {story.url}</p>
+                  <a href={story.url} style={{ color: "gray" }}>
+                    {" "}
+                    <p> {story.url}</p>
+                  </a>
                 </div>
-                <div>
-                  <p>{story.points} points</p>
-                  <p>{story.author}</p>
-                  <p>{story.created_at}</p>
-                  <p>{story.num_comments} comments</p>
+                <div className="main-down">
+                  <p>{story.points + " "} points |</p>
+                  <p>{story.author + " "} |</p>
+                  <p>{story.created_at + " "} |</p>
+                  <p>{story.num_comments} comments |</p>
                 </div>
               </div>
             );

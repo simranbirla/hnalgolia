@@ -15,7 +15,7 @@ const Page = ({ count, increasePage, page }) => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root + " page"}>
       <Pagination
         count={count}
         variant="outlined"

@@ -1,0 +1,7 @@
+.filters {
+  display: flex;
+}
+
+.filters p {
+  align-self: center;
+}

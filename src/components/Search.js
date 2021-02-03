@@ -16,16 +16,16 @@ const Search = (props) => {
   }, [props.filter.page, props.match.params.id]);
 
   return (
-    <div>
+    <div className="mainpage">
       {data
         ? data.hits.map((story) => {
             return (
-              <div>
-                <div>
+              <div className="main">
+                <div className="main-title">
                   <h2>{story.title}</h2>
                   <p> {story.url}</p>
                 </div>
-                <div>
+                <div className="main-down">
                   <p>{story.points} points</p>
                   <p>{story.author}</p>
                   <p>{story.created_at}</p>
