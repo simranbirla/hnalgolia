@@ -76,11 +76,11 @@ const Filter = (props) => {
           value={time}
           onChange={handleTime}
         >
-          <MenuItem value=" ">All time</MenuItem>
-          <MenuItem value="last24h">Last 24 hour</MenuItem>
-          <MenuItem value="pastWeek">Past Week</MenuItem>
-          <MenuItem value="pastMonth">Past Month</MenuItem>
-          <MenuItem value="pastYear">Past Year</MenuItem>
+          <MenuItem value="all">All time</MenuItem>
+          <MenuItem value="day">Last 24 hour</MenuItem>
+          <MenuItem value="week">Past Week</MenuItem>
+          <MenuItem value="month">Past Month</MenuItem>
+          <MenuItem value="year">Past Year</MenuItem>
           <MenuItem value="custom">Custom</MenuItem>
         </Select>
       </FormControl>

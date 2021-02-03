@@ -13,11 +13,13 @@ const App = ({ sign }) => {
   return (
     <div>
       <Router history={history}>
-        <Header />
-        <Filter />
         <Switch>
           {sign ? (
-            <Route path="/" exact component={MainPage} />
+            <>
+              <Route path="/" component={Header} />
+              <Route path="/" component={Filter} />
+              <Route path="/" exact component={MainPage} />
+            </>
           ) : (
             <Route path="/" exact component={Login} />
           )}

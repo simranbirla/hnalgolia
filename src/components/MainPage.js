@@ -1,3 +1,4 @@
+//new Date(2020, 4, 29, 22, 00, 00, 00);
 import React, { useEffect, useState } from "react";
 import Page from "./Page";
 import { connect } from "react-redux";
@@ -5,15 +6,46 @@ import { connect } from "react-redux";
 const MainPage = ({ filter }) => {
   const [data, setData] = useState();
   useEffect(() => {
-    fetch(
-      `http://hn.algolia.com/api/v1/search?query=&page=${filter.page}&tags=${filter.cat}`
-    )
-      .then((res) => res.json())
-      .then((data) => setData(data));
+    if (filter.type === "date") {
+      if (filter.time === "all") {
+        fetch(
+          `http://hn.algolia.com/api/v1/search_by_date?query=&page=${filter.page}&tags=${filter.cat}`
+        )
+          .then((res) => res.json())
+          .then((data) => setData(data));
+      } else if (filter.time === "week") {
+        var week =
+          new Date(
+            new Date().getFullYear(),
+            new Date().getMonth() + 1,
+            new Date().getDate(),
+            0,
+            0,
+            0,
+            0
+          ) / 1000;
+        console.log(week);
+        fetch(
+          `http://hn.algolia.com/api/v1/search_by_date?query=&page=${
+            filter.page
+          }&tags=${filter.cat}&numericFilters=created_at_i&gt${
+            week - 604800
+          },created_at_i<${week}`
+        )
+          .then((res) => res.json())
+          .then((data) => setData(data));
+      }
+    } else {
+      fetch(
+        `http://hn.algolia.com/api/v1/search?query=&page=${filter.page}&tags=${filter.cat}`
+      )
+        .then((res) => res.json())
+        .then((data) => setData(data));
+    }
     return () => {
       setData();
     };
-  }, [filter.page, filter.cat]);
+  }, [filter.page, filter.cat, filter.type, filter.time]);
 
   return (
     <div>

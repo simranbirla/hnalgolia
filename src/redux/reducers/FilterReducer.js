@@ -1,5 +1,5 @@
 const FilterReducer = (
-  state = { cat: "", type: "popularity", time: "", page: 0 },
+  state = { cat: "", type: "popularity", time: "all", page: 0 },
   action
 ) => {
   switch (action.type) {
